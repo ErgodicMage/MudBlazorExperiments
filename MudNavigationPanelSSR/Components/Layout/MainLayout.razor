@@ -8,7 +8,7 @@
 
 <MudLayout>
     <MudAppBar Elevation="1">
-        <MudIconButton Icon="@Icons.Material.Filled.Home" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => GoHome())"/>
+        <MudIconButton Icon="@Icons.Material.Filled.Home" Color="Color.Inherit" Edge="Edge.Start" OnClick="@GoHome"/>
         <MudSpacer />
         <MudText Typo="Typo.h5" Class="ml-3">Mud Navigation Panel SSR Example</MudText>
         <MudSpacer />
@@ -28,7 +28,7 @@
 </div>
 
 @code {
-        private void GoHome()
+    private void GoHome()
     {
         _navigationManager.NavigateTo("/");
     }
