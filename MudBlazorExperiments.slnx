@@ -5,6 +5,7 @@
     <Platform Name="x86" />
   </Configurations>
   <Folder Name="/Solution Items/">
+    <File Path="Directory.Build.props" />
     <File Path="ErgodicMage.jpg" />
     <File Path="LICENSE" />
     <File Path="README.md" />
