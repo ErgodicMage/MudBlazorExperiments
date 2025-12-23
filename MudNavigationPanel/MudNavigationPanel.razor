@@ -1,0 +1,51 @@
+﻿@inherits MudComponentBase
+
+@if (CardSettings is not null)
+{
+    <MudPaper Style="@Stylename" Width="100%" Height="100%">
+
+        <MudGrid Spacing="100" Justify="Justify.SpaceEvenly">
+            @foreach (var setting in CardSettings)
+            {
+                @* <AuthorizeView Roles=@setting.Role> *@
+                    <MudNavigationCard 
+                        Title=@setting.Title 
+                        Icon=@setting.Icon 
+                        Href=@setting.Href
+                        Height=@CardHeight 
+                        Width=@CardWidth 
+                        BackgroundColor=@CardBackgroundColor
+                        TitleColor=@CardTitleColor 
+                        IconColor=@CardIconColor 
+                        IconSize=@CardIconSize />
+                @* </AuthorizeView> *@
+            }
+        </MudGrid>
+
+    </MudPaper>
+}
+
+@code {
+    [Parameter]
+    public List<MudNavigationCardSettings>? CardSettings { get; set; }
+    [Parameter]
+    public string? BackgroundColor { get; set; }
+    [Parameter]
+    public string? CardBackgroundColor { get; set; }
+    [Parameter]
+    public string? CardHeight { get; set; }
+    [Parameter]
+    public string? CardWidth { get; set; }
+    [Parameter]
+    public Color CardTitleColor { get; set; } = Color.Default;
+    [Parameter]
+    public Color CardIconColor { get; set; } = Color.Default;
+    [Parameter]
+    public Size CardIconSize { get; set; }
+
+    protected string Stylename => new StyleBuilder()
+        .AddStyle("background", BackgroundColor, !string.IsNullOrEmpty(BackgroundColor))
+        .AddStyle(Style)
+        .Build();
+
+}

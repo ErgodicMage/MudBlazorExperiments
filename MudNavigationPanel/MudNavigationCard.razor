@@ -1,0 +1,19 @@
+﻿@using System.Text
+
+@* @namespace ErgodicMage.MudNavigationPanel *@
+
+@inject NavigationManager NavigationManager
+@inherits MudComponentBase
+
+<MudButton class="pa-8 ma-2" Variant="Variant.Filled" @onclick="@OnClick" height=@Height width=@Width
+           Style="@Stylename">
+    <MudStack Spacing="2" AlignItems="AlignItems.Center" Justify="Justify.Center">
+        <MudText Align="Align.Center" Color=@TitleColor>@Title</MudText>
+        <br />
+        <MudIcon Size=@IconSize Color=@IconColor Icon="@Icon" />
+    </MudStack>
+
+</MudButton>
+
+
+
