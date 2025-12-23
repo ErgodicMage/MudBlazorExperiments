@@ -1,6 +1,3 @@
-using MudBlazor.Services;
-using MudNavigationPanelSSR.Components;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add MudBlazor services

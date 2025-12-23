@@ -4,6 +4,11 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
+  <Folder Name="/Solution Items/">
+    <File Path="ErgodicMage.jpg" />
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+  </Folder>
   <Project Path="MudNavigationPanel/MudNavigationPanel.csproj" />
   <Project Path="MudNavigationPanelSSR/MudNavigationPanelSSR.csproj" />
 </Solution>
