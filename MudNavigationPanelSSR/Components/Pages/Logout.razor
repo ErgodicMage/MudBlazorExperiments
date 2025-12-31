@@ -1,7 +1,31 @@
 ﻿@page "/Logout"
+@using ErgodicMage.MudNavigationPanelSSR.Authentication
+@inherits LayoutComponentBase
+@inject AuthenticationStateProvider authStateProvider
+@inject NavigationManager navManager
 
-<h3>Logout</h3>
+<PageTitle>Logout</PageTitle>
+
+<AuthorizeView Roles="@NavigationRoles.AuthRoles">
+    <Authorized>
+        <MudText Color="MudBlazor.Color.Primary"><b>Logout @context.User.Identity?.Name</b></MudText>
+        <MudButton StartIcon="@Icons.Material.Filled.Logout" ButtonType="ButtonType.Submit" OnClick="@OnClickAsync"
+                   Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Logout</MudButton>
+    </Authorized>
+    <NotAuthorized>
+        <MudText Color="MudBlazor.Color.Primary"><b>You are not logged in!</b></MudText>
+    </NotAuthorized>
+</AuthorizeView>
 
 @code {
+    [CascadingParameter]
+    private Task<AuthenticationState>? authState { get; set; }
 
+    public async Task OnClickAsync()
+    {
+        var customAuthStateProvider = authStateProvider as NavigationAuthenticationStateProvider;
+        if (customAuthStateProvider is not null)
+            await customAuthStateProvider.UpdateAuthenticationState(null);
+        navManager.NavigateTo("/", true);
+    }
 }

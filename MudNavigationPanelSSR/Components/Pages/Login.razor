@@ -1,7 +1,70 @@
-﻿@page "/Login"
+﻿@page "/login"
+@using System.ComponentModel.DataAnnotations
+@using ErgodicMage.MudNavigationPanelSSR.Authentication
 
-<h3>Login</h3>
+@inherits LayoutComponentBase
+@inject INavigationUserService userAccountService
+@inject IJSRuntime js
+@inject AuthenticationStateProvider authStateProvider
+@inject NavigationManager navManager
+
+<PageTitle>Login</PageTitle>
+
+<MudText Color="MudBlazor.Color.Primary"><b>Login</b></MudText>
+<br />
+
+<EditForm Model="@model" OnValidSubmit="@LoginClicked">
+    <MudGrid>
+        <MudItem xs="12" sm="7">
+            <MudCard>
+                <MudCardContent>
+                    <MudTextField Label="First name"
+                                  @bind-Value="model!.UserName" For="@(() => model!.UserName)" />
+                    <MudTextField Label="Password" Class="mt-3"
+                                  @bind-Value="model.Password" For="@(() => model.Password)" InputType="InputType.Password" />
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton StartIcon="@Icons.Material.Filled.Login" ButtonType="ButtonType.Submit"
+                               Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Login</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+</EditForm>
 
 @code {
+    private sealed class Model
+    {
+        [Required]
+        public string? UserName { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
+        public string? Password { get; set; }
+    }
 
+    private Model? model;
+    private EditContext? editContext;
+
+    protected override void OnInitialized()
+    {
+        model = new();
+        editContext = new(model);
+    }
+
+    private async Task LoginClicked()
+    {
+        NavigationUser? userAccount = await userAccountService.GetUser(model?.UserName);
+        if (userAccount is null || userAccount.Password != model?.Password)
+        {
+            await js.InvokeVoidAsync("alert", "Invalid User Name or Password");
+            return;
+        }
+
+        NavigationAuthenticationStateProvider? customAuthStateProvider = authStateProvider as NavigationAuthenticationStateProvider;
+
+        if (customAuthStateProvider is not null)
+            await customAuthStateProvider.UpdateAuthenticationState(new UserSession(userAccount.UserName, userAccount.Email, 
+                                                                                userAccount.Role));
+        navManager.NavigateTo("/", true);
+    }
 }

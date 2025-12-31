@@ -1,5 +1,7 @@
 ﻿@page "/"
 
+@using ErgodicMage.MudNavigationPanelSSR.Authentication
+
 <PageTitle>Home</PageTitle>
 
 <MudStack>
@@ -30,11 +32,12 @@
     // Could move these to a configuration file.
     List<MudNavigationCardSettings> navigationCardSettings = new()
     {
-        new(){Title="Login", Icon=Icons.Material.Filled.Login, Href="Login"},
-        new(){Title="Logout", Icon=Icons.Material.TwoTone.Logout, Href="Logout" },
-        new(){Title="Counter", Icon=Icons.Material.Filled.Add, Href="counter"},
-        new(){Title="Weather", Icon=Icons.Material.Filled.List, Href="weather"},
-        new(){Title="Administration", Icon=Icons.Material.TwoTone.AdminPanelSettings, Href="Administration" },
+        new(){Title="Login", Icon=Icons.Material.Filled.Login, Href="login", Role=NavigationRoles.Anonymous},
+        new(){Title="Logout", Icon=Icons.Material.TwoTone.Logout, Href="logout", Role=NavigationRoles.AuthRoles },
+        new(){Title="Counter", Icon=Icons.Material.Filled.Add, Href="counter", Role=NavigationRoles.AllRoles},
+        new(){Title="Weather", Icon=Icons.Material.Filled.List, Href="weather", Role=NavigationRoles.AllRoles},
+        new (){Title="Edit User", Icon=Icons.Material.Filled.VerifiedUser, Href="user", Role=NavigationRoles.AuthRoles },
+        new(){Title="Administration", Icon=Icons.Material.TwoTone.AdminPanelSettings, Href="administration", Role=NavigationRoles.Admin },
     };
 
 }
