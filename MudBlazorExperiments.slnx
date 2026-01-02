@@ -6,6 +6,7 @@
   </Configurations>
   <Folder Name="/Solution Items/">
     <File Path="Directory.Build.props" />
+    <File Path="ErgodicMage.ico" />
     <File Path="ErgodicMage.jpg" />
     <File Path="LICENSE" />
     <File Path="README.md" />
