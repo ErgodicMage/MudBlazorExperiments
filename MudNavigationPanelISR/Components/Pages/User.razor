@@ -1,4 +1,7 @@
 ﻿@page "/user"
+@using ErgodicMage.MudNavigationPanelISR.Authentication
+@attribute [Authorize(Roles=NavigationRoles.AuthRoles)]
+
 <h3>User</h3>
 
 @code {

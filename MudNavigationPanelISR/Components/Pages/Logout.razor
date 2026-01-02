@@ -3,6 +3,7 @@
 @inherits LayoutComponentBase
 @inject AuthenticationStateProvider authStateProvider
 @inject NavigationManager navManager
+@attribute [Authorize(Roles=NavigationRoles.AuthRoles)]
 
 <PageTitle>Logout</PageTitle>
 

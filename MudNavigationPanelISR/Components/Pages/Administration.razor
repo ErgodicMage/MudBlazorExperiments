@@ -1,4 +1,6 @@
 ﻿@page "/Administration"
+@using ErgodicMage.MudNavigationPanelISR.Authentication
+@attribute [Authorize(Roles=NavigationRoles.Admin)]
 
 <h3>Administration</h3>
 
