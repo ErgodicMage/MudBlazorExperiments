@@ -5,26 +5,32 @@
     <MudPaper Style="@Stylename" Width="100%" Height="100%">
 
         <MudGrid Spacing="100" Justify="Justify.SpaceEvenly">
-            @foreach (var setting in CardSettings)
+            @if (@UseAuthorization)
             {
-                if(!string.IsNullOrEmpty(setting.Role))
+                foreach (var setting in CardSettings)
                 {
-                    <AuthorizeView Roles=@setting.Role>
-                        <MudNavigationCard 
-                            Title=@setting.Title 
-                            Icon=@setting.Icon 
-                            Href=@setting.Href
-                            Height=@CardHeight 
-                            Width=@CardWidth 
-                            BackgroundColor=@CardBackgroundColor
-                            TitleColor=@CardTitleColor 
-                            IconColor=@CardIconColor 
-                            IconSize=@CardIconSize />
-                    </AuthorizeView>
+                    if(!string.IsNullOrEmpty(setting.Role))
+                    {
+                        <AuthorizeView Roles=@setting.Role>
+                            <MudNavigationCard 
+                                Title=@setting.Title 
+                                Icon=@setting.Icon 
+                                Href=@setting.Href
+                                Height=@CardHeight 
+                                Width=@CardWidth 
+                                BackgroundColor=@CardBackgroundColor
+                                TitleColor=@CardTitleColor 
+                                IconColor=@CardIconColor 
+                                IconSize=@CardIconSize />
+                        </AuthorizeView>
+                    }
                 }
-@*                 else
+            }
+            else
+            {
+                foreach (var setting in CardSettings)
                 {
-                    <MudNavigationCard 
+                     <MudNavigationCard 
                         Title=@setting.Title 
                         Icon=@setting.Icon 
                         Href=@setting.Href
@@ -33,8 +39,8 @@
                         BackgroundColor=@CardBackgroundColor
                         TitleColor=@CardTitleColor 
                         IconColor=@CardIconColor 
-                        IconSize=@CardIconSize />                    
-                } *@
+                        IconSize=@CardIconSize />
+                }
             }
         </MudGrid>
 

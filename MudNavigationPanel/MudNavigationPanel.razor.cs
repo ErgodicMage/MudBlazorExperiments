@@ -22,6 +22,8 @@ namespace ErgodicMage.MudNavigationPanel
         public Color CardIconColor { get; set; } = Color.Default;
         [Parameter]
         public Size CardIconSize { get; set; }
+        [Parameter]
+        public bool UseAuthorization { get; set; }
 
         protected string Stylename => new StyleBuilder()
             .AddStyle("background", BackgroundColor, !string.IsNullOrEmpty(BackgroundColor))

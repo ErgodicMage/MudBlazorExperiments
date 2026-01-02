@@ -11,13 +11,16 @@ builder.Services.AddMudServices();
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
-builder.Services.AddAuthentication();
-builder.Services.AddAuthorization();
-builder.Services.AddCascadingAuthenticationState();
+if (builder.Configuration.GetValue<bool>("UseAuthentication"))
+{
+    builder.Services.AddAuthentication();
+    builder.Services.AddAuthorization();
+    builder.Services.AddCascadingAuthenticationState();
 
-builder.Services.AddScoped<ProtectedSessionStorage>();
-builder.Services.AddScoped<AuthenticationStateProvider, NavigationAuthenticationStateProvider>();
-builder.Services.AddSingleton<INavigationUserService, SimpleNavigationUserService>();
+    builder.Services.AddScoped<ProtectedSessionStorage>();
+    builder.Services.AddScoped<AuthenticationStateProvider, NavigationAuthenticationStateProvider>();
+    builder.Services.AddSingleton<INavigationUserService, SimpleNavigationUserService>();
+}
 
 var app = builder.Build();
 
