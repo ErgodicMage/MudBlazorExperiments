@@ -1,4 +1,4 @@
-namespace ErgodicMage.MudNavigationPanelSSR.Authentication;
+namespace ErgodicMage.MudNavigationPanelISR.Authentication;
 
 public static class NavigationRoles
 {

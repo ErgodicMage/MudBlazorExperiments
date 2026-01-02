@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "MudBlazor Navigation SSR",
+            "name": "MudBlazor Navigation ISR",
             "type": "dotnet",
             "request": "launch",
-            "projectPath": "${workspaceFolder}/MudNavigationPanelSSR/MudNavigationPanelSSR.csproj"
+            "projectPath": "${workspaceFolder}/MudNavigationPanelISR/MudNavigationPanelISR.csproj"
         }
 
     ]

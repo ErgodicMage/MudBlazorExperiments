@@ -2,7 +2,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 
-namespace ErgodicMage.MudNavigationPanelSSR.Authentication;
+namespace ErgodicMage.MudNavigationPanelISR.Authentication;
 
 public class NavigationAuthenticationStateProvider : AuthenticationStateProvider
 {

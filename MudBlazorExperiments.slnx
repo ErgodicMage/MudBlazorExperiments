@@ -11,5 +11,5 @@
     <File Path="README.md" />
   </Folder>
   <Project Path="MudNavigationPanel/MudNavigationPanel.csproj" />
-  <Project Path="MudNavigationPanelSSR/MudNavigationPanelSSR.csproj" />
+  <Project Path="MudNavigationPanelISR/MudNavigationPanelISR.csproj" />
 </Solution>

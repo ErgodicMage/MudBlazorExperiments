@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
-using ErgodicMage.MudNavigationPanelSSR.Authentication;
+using ErgodicMage.MudNavigationPanelISR.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 
