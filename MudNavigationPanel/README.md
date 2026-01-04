@@ -24,7 +24,7 @@ If there is a better method please feel free to open an issue and leave a sugges
 The MudNavigationPanel is the overall container of the MudNavigationCards. It sets the layout of the cards as well as customizing colors and sizes if desired. By itself it's fairly simple and easy to use, supply a list of **MudNavigationCardSettings**, supply the colors and sizes of the cards and it will display the panel.
 
 ## Card Settings
-The **MudNavigationCardSettings" gives the details of what each card should display. Optional title and icon, the href of the page to navigate to and any authorization roles. With these settings different panels can be displayed for different purposes.
+The **MudNavigationCardSettings** gives the details of what each card should display. Optional title and icon, the href of the page to navigate to and any authorization roles. With these settings different panels can be displayed for different purposes.
 
 ## Authorization
 The **MudNavigationPanel** has the ability to display cards based upon the user's authorization role. By default it does not use authorization, but can do so by setting UseAuthorization. Set the specific card authorization role by setting Role in the **MudNavigationCardSettings**.
