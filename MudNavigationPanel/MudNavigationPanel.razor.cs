@@ -7,7 +7,7 @@ namespace ErgodicMage.MudNavigationPanel
     public partial class MudNavigationPanel
     {
         [Parameter]
-        public List<MudNavigationCardSettings>? CardSettings { get; set; }
+        public ICollection<MudNavigationCardSettings>? CardSettings { get; set; }
         [Parameter]
         public string? BackgroundColor { get; set; }
         [Parameter]

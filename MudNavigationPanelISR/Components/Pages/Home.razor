@@ -33,7 +33,7 @@
     bool useAuthentication;
 
     // Could move these to a configuration file.
-    List<MudNavigationCardSettings> navigationCardSettings = new();
+    MudNavigationCardSettings[]? navigationCardSettings; // = new();
 
     protected override void OnInitialized()
     {
@@ -41,17 +41,23 @@
 
         if (useAuthentication)
         {
-            navigationCardSettings.Add(new(){Title="Login", Icon=Icons.Material.Filled.Login, Href="login", Role=NavigationRoles.Anonymous});
-            navigationCardSettings.Add(new(){Title="Logout", Icon=Icons.Material.TwoTone.Logout, Href="logout", Role=NavigationRoles.AuthRoles});
-            navigationCardSettings.Add(new(){Title="Counter", Icon=Icons.Material.Filled.Add, Href="counter", Role=NavigationRoles.AllRoles});
-            navigationCardSettings.Add(new(){Title="Weather", Icon=Icons.Material.Filled.List, Href="weather", Role=NavigationRoles.AllRoles});
-            navigationCardSettings.Add(new(){Title="Edit User", Icon=Icons.Material.Filled.VerifiedUser, Href="user", Role=NavigationRoles.AuthRoles});
-            navigationCardSettings.Add(new(){Title="Administration", Icon=Icons.Material.TwoTone.AdminPanelSettings, Href="administration", Role=NavigationRoles.Admin});            
+            navigationCardSettings = new MudNavigationCardSettings[]
+            {
+                new(){Title="Login", Icon=Icons.Material.Filled.Login, Href="login", Role=NavigationRoles.Anonymous},
+                new(){Title="Logout", Icon=Icons.Material.TwoTone.Logout, Href="logout", Role=NavigationRoles.AuthRoles},
+                new(){Title="Counter", Icon=Icons.Material.Filled.Add, Href="counter", Role=NavigationRoles.AllRoles},
+                new(){Title="Weather", Icon=Icons.Material.Filled.List, Href="weather", Role=NavigationRoles.AllRoles},
+                new(){Title="Edit User", Icon=Icons.Material.Filled.VerifiedUser, Href="user", Role=NavigationRoles.AuthRoles},
+                new(){Title="Administration", Icon=Icons.Material.TwoTone.AdminPanelSettings, Href="administration", Role=NavigationRoles.Admin}
+            };
         }
         else
         {
-            navigationCardSettings.Add(new(){Title="Counter", Icon=Icons.Material.Filled.Add, Href="counter"});
-            navigationCardSettings.Add(new(){Title="Weather", Icon=Icons.Material.Filled.List, Href="weather"});
+            navigationCardSettings = new MudNavigationCardSettings[]
+            {
+                new(){Title="Counter", Icon=Icons.Material.Filled.Add, Href="counter"},
+                new(){Title="Weather", Icon=Icons.Material.Filled.List, Href="weather"}
+            };
         }
     }
 }
