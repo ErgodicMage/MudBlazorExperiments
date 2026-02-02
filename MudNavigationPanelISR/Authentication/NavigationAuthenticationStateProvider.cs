@@ -17,9 +17,8 @@ public class NavigationAuthenticationStateProvider : AuthenticationStateProvider
     {
         try
         {
-            var userSessionStorageResult = await _sessionStorage.GetAsync<UserSession>("UserSession");
-            var userSession = userSessionStorageResult.Success ? userSessionStorageResult.Value : null;
-
+            var userSession = await GetUserSession();
+ 
             ClaimsPrincipal claims = userSession is null ? GetAnonymousClaims() : GetUserClaims(userSession);
             return await Task.FromResult(new AuthenticationState(claims));
         }
