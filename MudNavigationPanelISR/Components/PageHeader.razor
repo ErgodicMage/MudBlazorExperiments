@@ -5,7 +5,7 @@
 
 @if (!string.IsNullOrEmpty(DisplayText))
 {
-    <MudPaper Elevation="0">
+    <MudPaper Elevation="@Elevation">
         <br/>
         <MudText Align="Align.Center" Typo="Typo.h5" GutterBottom=true Color="Color.Primary"><b>@DisplayText</b></MudText>
         @if (!string.IsNullOrEmpty(DisplaySubText))
@@ -23,4 +23,6 @@
     public string? DisplaySubText { get; set;}
     [Parameter]
     public string? Title { get; set; }
+    [Parameter]
+    public int Elevation { get; set;} = 0;
 }
