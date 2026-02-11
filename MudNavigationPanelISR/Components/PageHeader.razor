@@ -1,0 +1,26 @@
+﻿@if (!string.IsNullOrEmpty(Title))
+{
+    <PageTitle>@Title</PageTitle>
+}
+
+@if (!string.IsNullOrEmpty(DisplayText))
+{
+    <MudPaper Elevation="0">
+        <br/>
+        <MudText Align="Align.Center" Typo="Typo.h5" GutterBottom=true Color="Color.Primary"><b>@DisplayText</b></MudText>
+        @if (!string.IsNullOrEmpty(DisplaySubText))
+        {
+            <MudText Align="Align.Center" Typo="Typo.body1">@DisplaySubText</MudText>
+        }
+    </MudPaper>
+    <br/>
+}
+
+@code {
+    [Parameter]
+    public string? DisplayText { get; set; }
+    [Parameter]
+    public string? DisplaySubText { get; set;}
+    [Parameter]
+    public string? Title { get; set; }
+}

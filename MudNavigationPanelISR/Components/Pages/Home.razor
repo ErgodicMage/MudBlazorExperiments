@@ -3,24 +3,18 @@
 
 @using ErgodicMage.MudNavigationPanelISR.Authentication
 
-<PageTitle>Home</PageTitle>
+<PageHeader DisplayText="ErgodicMage Home Navigation Panel" Title="Home" />
 
-<MudStack>
-    <MudText Align="Align.Center" Typo="Typo.h5"s Color="Color.Primary"><b>ErgodicMage Home Navigation Panel</b></MudText>
-    <br/>
-
-    <MudNavigationPanel 
-        CardSettings=@navigationCardSettings 
-        BackgroundColor=@backgroundColor 
-        CardBackgroundColor=@cardBackgroundColor 
-        CardHeight=@cardHeight 
-        CardWidth=@cardWidth 
-        CardTitleColor=@titleColor 
-        CardIconColor=iconColor 
-        CardIconSize=iconSize
-        UseAuthorization=@useAuthentication/>
-
-</MudStack>
+<MudNavigationPanel 
+    CardSettings=@navigationCardSettings 
+    BackgroundColor=@backgroundColor 
+    CardBackgroundColor=@cardBackgroundColor 
+    CardHeight=@cardHeight 
+    CardWidth=@cardWidth 
+    CardTitleColor=@titleColor 
+    CardIconColor=iconColor 
+    CardIconSize=iconSize
+    UseAuthorization=@useAuthentication/>
 
 @code{
     string backgroundColor =  Colors.Indigo.Lighten5;

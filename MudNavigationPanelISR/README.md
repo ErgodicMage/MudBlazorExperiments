@@ -3,6 +3,9 @@
 ## Purpose
 Basically is a demo app for the [**MudNavigationPanel**](https://github.com/ErgodicMage/MudBlazorExperiments) component. It also contains a simple authentication/authorization ability. The app is just a shell and doesn't implement and real functionality. As I mentioned elsewhere, I'm new to Blazor and welcome any suggestions and/or criticisms.
 
+#### PageHeader component
+I have added another component (my second) PageHeader to display a header text (and subtext) at the top of each page and also set the PageTitle.
+
 #### Thanks to Coding Droplets
 The simple authentication and authorization originally came from [Coding Droplets](https://github.com/codingdroplets/BlazorServerAuthenticationAndAuthorization) and easily worked for me. I was able to quickly figure out how it worked and implement without too much head scratching. I did end up refactoring the code somewhat to match my style but it's still the same implementation. Thank you Coding Droplets for a good example of how to do this.
 

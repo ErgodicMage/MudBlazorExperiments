@@ -4,14 +4,11 @@
 
 @inherits LayoutComponentBase
 @inject INavigationUserService userAccountService
-@inject IJSRuntime js
+@inject ISnackbar snackBar
 @inject AuthenticationStateProvider authStateProvider
 @inject NavigationManager navManager
 
-<PageTitle>Login</PageTitle>
-
-<MudText Color="MudBlazor.Color.Primary"><b>Login</b></MudText>
-<br />
+<PageHeader DisplayText="Login to Navigation Panel" Title="Login" />
 
 <EditForm Model="@model" OnValidSubmit="@LoginClicked">
     <MudGrid>
@@ -19,13 +16,13 @@
             <MudCard>
                 <MudCardContent>
                     <MudTextField Label="First name"
-                                  @bind-Value="model!.UserName" For="@(() => model!.UserName)" />
+                        @bind-Value="model!.UserName" For="@(() => model!.UserName)" />
                     <MudTextField Label="Password" Class="mt-3"
-                                  @bind-Value="model.Password" For="@(() => model.Password)" InputType="InputType.Password" />
+                        @bind-Value="model.Password" For="@(() => model.Password)" InputType="InputType.Password" />
                 </MudCardContent>
                 <MudCardActions>
                     <MudButton StartIcon="@Icons.Material.Filled.Login" ButtonType="ButtonType.Submit"
-                               Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Login</MudButton>
+                        Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Login</MudButton>
                 </MudCardActions>
             </MudCard>
         </MudItem>
@@ -56,7 +53,7 @@
         NavigationUser? userAccount = await userAccountService.GetUser(model?.UserName);
         if (userAccount is null || userAccount.Password != model?.Password)
         {
-            await js.InvokeVoidAsync("alert", "Invalid User Name or Password");
+            snackBar.Add("Invalid User Name or Password", Severity.Error);
             return;
         }
 
