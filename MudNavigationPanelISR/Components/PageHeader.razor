@@ -1,28 +1,42 @@
-﻿@if (!string.IsNullOrEmpty(Title))
+﻿@using MudBlazor.Utilities
+@inherits MudComponentBase
+
+@if (!string.IsNullOrEmpty(Title))
 {
     <PageTitle>@Title</PageTitle>
 }
 
 @if (!string.IsNullOrEmpty(DisplayText))
 {
-    <MudPaper Elevation="@Elevation">
+    <MudPaper Style="@Stylename" Elevation="@Elevation" >
         <br/>
-        <MudText Align="Align.Center" Typo="Typo.h5" GutterBottom=true Color="Color.Primary"><b>@DisplayText</b></MudText>
+        <MudText Align="Align.Center" Typo="Typo.h5" GutterBottom=true Color=@TextColor><b>@DisplayText</b></MudText>
         @if (!string.IsNullOrEmpty(DisplaySubText))
         {
-            <MudText Align="Align.Center" Typo="Typo.body1">@DisplaySubText</MudText>
+            <MudText Align="Align.Center" Typo="Typo.body1" Color=@SubtextColor>@DisplaySubText</MudText>
         }
     </MudPaper>
     <br/>
 }
 
 @code {
+    protected string Stylename => new StyleBuilder()
+        .AddStyle("background", BackgroundColor, !string.IsNullOrEmpty(BackgroundColor))
+        .AddStyle(Style)
+        .Build();
+
     [Parameter]
     public string? DisplayText { get; set; }
     [Parameter]
     public string? DisplaySubText { get; set;}
     [Parameter]
     public string? Title { get; set; }
+    [Parameter]
+    public string? BackgroundColor { get; set; }
+    [Parameter]
+    public Color TextColor { get; set; } = Color.Primary;
+    [Parameter]
+    public Color SubtextColor { get; set; } = Color.Inherit;
     [Parameter]
     public int Elevation { get; set;} = 0;
 }
